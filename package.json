@@ -1,0 +1,26 @@
+{
+  "name": "hello-truffle",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ganache": "ganache-cli --networkId $npm_package_config_ganache_networkId --allowUnlimitedContractSize --gasLimit $npm_package_config_ganache_gasLimit --gasPrice $npm_package_config_ganache_gasPrice --mnemonic \"$MNEMONIC\"",
+    "start": "concurrently \"npm run ganache\"   \"npm run migrate\" ",
+    "migrate": "rm -rf build && truffle migrate --reset --compile-all --network development"
+  },
+  "config": {
+    "ganache": {
+      "networkId": 3777,
+      "gasLimit": 700000,
+      "gasPrice": 300000000000
+    }
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^6.4.0",
+    "ganache-cli": "^6.12.2",
+    "truffle": "^5.4.23"
+  }
+}
